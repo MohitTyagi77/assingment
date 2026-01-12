@@ -1,0 +1,37 @@
+{
+  "application": {
+    "name": "Automation System",
+    "version": "1.0.0",
+    "author": "Development Team",
+    "description": "Small automation system for file validation and processing"
+  },
+  "settings": {
+    "validation": {
+      "required_extensions": [".txt", ".csv", ".json"],
+      "check_empty_files": true,
+      "strict_mode": false
+    },
+    "output": {
+      "create_timestamp": true,
+      "generate_summary": true,
+      "generate_logs": true,
+      "log_level": "INFO"
+    },
+    "processing": {
+      "max_file_size_mb": 100,
+      "encoding": "utf-8",
+      "fallback_encoding": "latin-1"
+    }
+  },
+  "thresholds": {
+    "warning_file_size_mb": 50,
+    "max_files_count": 1000,
+    "timeout_seconds": 300
+  },
+  "features": {
+    "colored_output": true,
+    "detailed_statistics": true,
+    "file_type_analysis": true,
+    "line_counting": true
+  }
+}

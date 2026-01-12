@@ -1,0 +1,71 @@
+AUTOMATION SYSTEM - PROJECT NOTES
+==================================
+
+Project Overview:
+-----------------
+This automation system is designed to validate input files, generate summaries,
+and produce detailed logs with safe failure handling.
+
+Key Features:
+-------------
+1. File Validation
+   - Checks for required file types (.txt, .csv, .json)
+   - Validates that files are not empty
+   - Handles permission errors gracefully
+   
+2. Summary Generation
+   - Provides file count statistics
+   - Calculates total sizes and line counts
+   - Groups data by file type
+   
+3. Detailed Logging
+   - Timestamps all operations
+   - Color-coded console output
+   - Comprehensive error messages
+   - Saves to automation.log file
+
+Design Decisions:
+-----------------
+- Uses only Python standard library (no external dependencies)
+- Implements three exit codes:
+  * 0 = Success
+  * 1 = Validation failure (user error)
+  * 2 = System error (unexpected failure)
+  
+- Safe failure approach:
+  * All exceptions are caught and logged
+  * Clear error messages without stack traces
+  * Graceful degradation when possible
+
+Edge Cases Handled:
+-------------------
+- Empty input folders
+- Files with no content (0 bytes)
+- Unreadable files (encoding issues)
+- Permission denied errors
+- Missing input folder
+- Invalid paths
+
+Future Improvements:
+--------------------
+- Add parallel processing for large file sets
+- Support additional file formats (XML, YAML)
+- Implement configurable validation rules
+- Add email notifications for failures
+- Create web dashboard for monitoring
+- Add database integration for historical tracking
+
+Test Scenarios:
+---------------
+1. Valid input folder with multiple files -> Should succeed
+2. Empty folder -> Should fail with clear message
+3. Folder with only empty files -> Should fail
+4. Non-existent folder -> Should fail
+5. Mix of valid and invalid files -> Should succeed with warnings
+
+Notes:
+------
+- All file sizes are displayed in human-readable format (KB, MB, etc.)
+- Line counting works for text-based files
+- Encoding fallback ensures compatibility with various file formats
+- Output folder is timestamped to prevent overwrites
